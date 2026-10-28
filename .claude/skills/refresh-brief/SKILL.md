@@ -27,10 +27,11 @@ For each entry in `WATCHLIST.tickers`:
    - `https://www.google.com/finance/quote/TICKER:EXCHANGE`
    - A web search for `TICKER stock price history` and the first reputable result
      (Nasdaq, Yahoo Finance, MarketWatch, WSJ).
-2. If the market is open now, also record the latest intraday price as
-   `latest: { date, time, price }` with the time in Eastern and set
-   `BRIEF.priceType = "intraday"`. If the market is closed, set `latest: null` and
-   `BRIEF.priceType = "close"`.
+2. The `closes` array holds completed days only. If the market is open now, also record the
+   latest intraday price as `latest: { date, time, price }` with the time in Eastern and set
+   `BRIEF.priceType = "intraday"`; it is shown only in the tape at the top of the page. The
+   changelog summary lines, news, and calendar use closes and do not mention the intraday
+   price. If the market is closed, set `latest: null` and `BRIEF.priceType = "close"`.
 3. Record the URL you actually used as `priceSource`. Record prices to two decimals.
 4. If you cannot get all five closes, record the ones you have (never pad, never estimate)
    and write a line in the changelog entry saying which days are missing and why.

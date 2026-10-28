@@ -202,8 +202,8 @@ const BRIEF = {
         { date: "2026-10-22", headline: "Shell, ExxonMobil JV Infineum exploring sale, FT reports", source: "TheFly (TipRanks)", url: "https://www.tipranks.com/news/the-fly/shell-exxonmobil-jv-infineum-exploring-sale-ft-reports-thefly-news", why: "Infineum, a chemicals business Exxon co-owns with Shell, is reportedly seeking a sale at about $8 billion, which could bring Exxon cash." }
       ],
       upcoming: [
-        { date: "2026-10-28", event: "FOMC interest rate decision, 2:00 PM ET (meeting Oct 27-28)", source: "Federal Reserve (FOMC calendar)", url: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" },
-        { date: "2026-10-30", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/xom/" }
+        { date: "2026-10-28", event: "FOMC interest rate decision (meeting Oct 27-28)", source: "Federal Reserve (FOMC calendar)", url: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" },
+        { date: "2026-10-30", event: "Q3 2026 earnings call", source: "ExxonMobil investor relations calendar", url: "https://investor.exxonmobil.com/news-events/ir-calendar/detail/20261030-3q-2026-earnings-call" }
       ]
     },
     CVX: {
@@ -218,7 +218,7 @@ const BRIEF = {
       priceSource: "https://stockanalysis.com/stocks/cvx/history/",
       news: [],
       upcoming: [
-        { date: "2026-10-30", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/cvx/" }
+        { date: "2026-10-30", event: "Q3 2026 earnings call, 11:00 AM ET", source: "Chevron advisory (Business Wire)", url: "https://investingnews.com/advisory-chevron-corporation-s-3q-2026-earnings-conference-call-and-webcast/" }
       ]
     },
     SHEL: {
@@ -235,7 +235,7 @@ const BRIEF = {
         { date: "2026-10-22", headline: "Shell, ExxonMobil JV Infineum exploring sale, FT reports", source: "TheFly (TipRanks)", url: "https://www.tipranks.com/news/the-fly/shell-exxonmobil-jv-infineum-exploring-sale-ft-reports-thefly-news", why: "Infineum, a chemicals business Shell co-owns with Exxon, is reportedly seeking a sale at about $8 billion." }
       ],
       upcoming: [
-        { date: "2026-10-29", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/shel/" }
+        { date: "2026-10-29", event: "Q3 2026 results", source: "Shell update note (GlobeNewswire)", url: "https://menafn.com/1111772206/Shell-Third-Quarter-2026-Update-Note" }
       ]
     },
     BP: {
@@ -252,7 +252,7 @@ const BRIEF = {
         { date: "2026-10-23", headline: "BP, Louisiana agree to Deepwater Horizon settlement payout, resolve coastal cases", source: "BNN Bloomberg", url: "https://www.bnnbloomberg.ca/business/international/2026/10/23/bp-louisiana-agree-to-deepwater-horizon-settlement-payout-resolve-coastal-cases/", why: "BP will pay Louisiana a $350 million lump sum instead of about $373 million in installments, closing out long-running spill claims." }
       ],
       upcoming: [
-        { date: "2026-10-30", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/bp/" }
+        { date: "2026-10-30", event: "Q3 2026 group results", source: "bp trading statement (SEC 6-K)", url: "https://www.sec.gov/Archives/edgar/data/0000313807/000165495426008895/a6390y.htm" }
       ]
     },
     COP: {
@@ -269,7 +269,7 @@ const BRIEF = {
         { date: "2026-10-27", headline: "ConocoPhillips assumed with a Neutral at Piper Sandler", source: "TheFly (TipRanks)", url: "https://www.tipranks.com/news/the-fly/conocophillips-assumed-with-a-neutral-at-piper-sandler-thefly-news", why: "Piper Sandler started coverage with a neutral rating and a $157 target, citing heavy spending and later free cash flow gains." }
       ],
       upcoming: [
-        { date: "2026-11-05", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/cop/" }
+        { date: "2026-11-05", event: "Q3 2026 earnings call, 12:00 PM ET", source: "ConocoPhillips investor relations", url: "https://www.conocophillips.com/investor-relations/" }
       ]
     }
   }
@@ -280,16 +280,16 @@ const CHANGELOG = [
     date: "2026-10-28",
     summary: [
       "Watchlist changed to XOM, CVX, SHEL, BP, COP. Old sample data for NVDA, JPM, ACN, DE, LLY removed.",
-      "XOM closes 178.09 to 179.91 (Oct 21 to Oct 27) on Infineum sale report; latest 180.97 intraday",
-      "CVX closes 226.78 to 228.23, no major news found; latest 229.28 intraday",
-      "SHEL closes 105.36 to 104.78 on Infineum sale report; latest 105.18 intraday",
-      "BP closes 49.85 to 48.93 on Deepwater Horizon settlement with Louisiana; latest 49.37 intraday",
-      "COP closes 145.67 to 147.96 on Piper Sandler initiation at Neutral; latest 149.06 intraday",
+      "XOM closes 178.09 to 179.91 (Oct 21 to Oct 27) on Infineum sale report",
+      "CVX closes 226.78 to 228.23, no major news found",
+      "SHEL closes 105.36 to 104.78 on Infineum sale report",
+      "BP closes 49.85 to 48.93 on Deepwater Horizon settlement with Louisiana",
+      "COP closes 145.67 to 147.96 on Piper Sandler initiation at Neutral",
       "Calendar added: FOMC decision Oct 28 (under XOM); earnings XOM Oct 30, CVX Oct 30, SHEL Oct 29, BP Oct 30, COP Nov 5.",
-      "Missing: CVX news is empty. Reuters, Business Wire, CNBC and Nasdaq pages could not be opened, so only articles opened this run are listed, one per ticker at most. Company IR pages not opened, so no earnings date is confirmed there.",
+      "Missing: CVX news is empty. Reuters, Business Wire, CNBC and Nasdaq pages could not be opened, so only articles opened this run are listed, one per ticker at most. Earnings dates were checked against company-issued releases and IR pages (see notes).",
       "Mode set to live."
     ],
-    note: "Verify first: earnings dates (taken from StockAnalysis only; XOM, CVX, BP, SHEL, COP IR pages not checked). Prices are all from StockAnalysis; the Oct 28 figures are intraday around 10:02-10:05 ET and are shown as latest, not mixed into closes. retrievedAt (10:06 ET) is approximate, based on the source page times."
+    note: "Earnings dates: XOM and COP confirmed on company IR pages; CVX, SHEL and BP confirmed in company-issued releases (Business Wire, GlobeNewswire, bp's SEC 6-K), because chevron.com and bp.com blocked automated access and Shell's own page showed no date. Prices are all from StockAnalysis. The summary lines above use closes; the top price on the page was taken at about 10:02-10:05 ET on Oct 28. retrievedAt (10:06 ET) is approximate, based on the source page times."
   },
   {
     date: "2026-10-16",

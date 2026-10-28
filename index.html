@@ -85,6 +85,9 @@ section { margin-bottom: 2rem; }
 .items .src { color: var(--muted); font-size: .85rem; }
 .items .w { margin: .15rem 0 0; font-size: .92rem; }
 .empty { color: var(--muted); font-size: .92rem; margin: 0; }
+@media screen {
+  .tape .sym a, .items .h a, .items a.src, .cal a, #repo a { display: inline-flex; align-items: center; min-height: 44px; }
+}
 
 /* Calendar */
 .cal { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
@@ -167,107 +170,127 @@ footer p { margin: .2rem 0; }
 /* ===== DATA. The refresh-brief agent edits BRIEF and CHANGELOG only. ===== */
 
 const WATCHLIST = {
-  owner: "Your Name",
-  club: "SIBC",
+  owner: "ggarino6",
+  club: "Personal Filings",
   repo: "",
   tickers: [
-    { symbol: "NVDA", name: "NVIDIA", exchange: "NASDAQ", why: "The AI capex cycle in one ticker. If this moves, the whole list moves." },
-    { symbol: "JPM",  name: "JPMorgan Chase", exchange: "NYSE", why: "The bank every banking recruit should be able to talk about for five minutes." },
-    { symbol: "ACN",  name: "Accenture", exchange: "NYSE", why: "The consulting bellwether. Its bookings tell you how clients feel about spending." },
-    { symbol: "DE",   name: "Deere", exchange: "NYSE", why: "Midwest industrial. Farm income, tariffs, and rates all show up here." },
-    { symbol: "LLY",  name: "Eli Lilly", exchange: "NYSE", why: "Indiana's largest company and the GLP-1 story." }
+    { symbol: "XOM",  name: "Exxon Mobil", exchange: "NYSE", why: "The largest U.S. oil major. Oil prices and refining margins show up here first." },
+    { symbol: "CVX",  name: "Chevron", exchange: "NYSE", why: "The other U.S. oil major. A read on crude prices, buybacks, and dividends." },
+    { symbol: "SHEL", name: "Shell", exchange: "NYSE", why: "Europe's biggest oil major, with a large LNG business alongside oil." },
+    { symbol: "BP",   name: "BP", exchange: "NYSE", why: "A UK oil major whose strategy between oil and renewables is worth watching." },
+    { symbol: "COP",  name: "ConocoPhillips", exchange: "NYSE", why: "A pure-play producer, so its results track oil and gas prices closely." }
   ]
 };
 
 const BRIEF = {
-  mode: "sample",
-  asOf: "2026-10-16",
-  retrievedAt: "2026-10-16T16:30:00-04:00",
-  priceType: "close",
+  mode: "live",
+  asOf: "2026-10-28",
+  retrievedAt: "2026-10-28T10:06:00-04:00",
+  priceType: "intraday",
   companies: {
-    NVDA: {
+    XOM: {
       closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 101.40 },
-        { date: "2026-10-14", close: 99.80 },
-        { date: "2026-10-15", close: 103.10 },
-        { date: "2026-10-16", close: 104.20 }
+        { date: "2026-10-21", close: 178.09 },
+        { date: "2026-10-22", close: 178.23 },
+        { date: "2026-10-23", close: 183.21 },
+        { date: "2026-10-26", close: 184.54 },
+        { date: "2026-10-27", close: 179.91 }
       ],
-      latest: null,
-      priceSource: "https://example.com/sample",
+      latest: { date: "2026-10-28", time: "10:05 ET", price: 180.97 },
+      priceSource: "https://stockanalysis.com/stocks/xom/history/",
       news: [
-        { date: "2026-10-15", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample. The agent writes one plain sentence here on why the item matters to the stock." }
+        { date: "2026-10-22", headline: "Shell, ExxonMobil JV Infineum exploring sale, FT reports", source: "TheFly (TipRanks)", url: "https://www.tipranks.com/news/the-fly/shell-exxonmobil-jv-infineum-exploring-sale-ft-reports-thefly-news", why: "Infineum, a chemicals business Exxon co-owns with Shell, is reportedly seeking a sale at about $8 billion, which could bring Exxon cash." }
       ],
       upcoming: [
-        { date: "2026-10-28", event: "Sample event (replace by refreshing)", source: "Sample", url: "https://example.com/sample" }
+        { date: "2026-10-28", event: "FOMC interest rate decision, 2:00 PM ET (meeting Oct 27-28)", source: "Federal Reserve (FOMC calendar)", url: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" },
+        { date: "2026-10-30", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/xom/" }
       ]
     },
-    JPM: {
+    CVX: {
       closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 99.30 },
-        { date: "2026-10-14", close: 98.90 },
-        { date: "2026-10-15", close: 98.20 },
-        { date: "2026-10-16", close: 97.60 }
+        { date: "2026-10-21", close: 226.78 },
+        { date: "2026-10-22", close: 226.68 },
+        { date: "2026-10-23", close: 233.21 },
+        { date: "2026-10-26", close: 232.01 },
+        { date: "2026-10-27", close: 228.23 }
       ],
-      latest: null,
-      priceSource: "https://example.com/sample",
-      news: [
-        { date: "2026-10-14", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample." }
-      ],
-      upcoming: []
-    },
-    ACN: {
-      closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 100.20 },
-        { date: "2026-10-14", close: 99.90 },
-        { date: "2026-10-15", close: 100.10 },
-        { date: "2026-10-16", close: 100.05 }
-      ],
-      latest: null,
-      priceSource: "https://example.com/sample",
+      latest: { date: "2026-10-28", time: "10:04 ET", price: 229.28 },
+      priceSource: "https://stockanalysis.com/stocks/cvx/history/",
       news: [],
       upcoming: [
-        { date: "2026-10-22", event: "Sample event (replace by refreshing)", source: "Sample", url: "https://example.com/sample" }
+        { date: "2026-10-30", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/cvx/" }
       ]
     },
-    DE: {
+    SHEL: {
       closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 102.50 },
-        { date: "2026-10-14", close: 101.80 },
-        { date: "2026-10-15", close: 103.90 },
-        { date: "2026-10-16", close: 102.70 }
+        { date: "2026-10-21", close: 105.36 },
+        { date: "2026-10-22", close: 105.80 },
+        { date: "2026-10-23", close: 108.18 },
+        { date: "2026-10-26", close: 106.91 },
+        { date: "2026-10-27", close: 104.78 }
       ],
-      latest: null,
-      priceSource: "https://example.com/sample",
+      latest: { date: "2026-10-28", time: "10:03 ET", price: 105.18 },
+      priceSource: "https://stockanalysis.com/stocks/shel/history/",
       news: [
-        { date: "2026-10-13", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample." }
-      ],
-      upcoming: []
-    },
-    LLY: {
-      closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 98.70 },
-        { date: "2026-10-14", close: 99.60 },
-        { date: "2026-10-15", close: 101.30 },
-        { date: "2026-10-16", close: 102.90 }
-      ],
-      latest: null,
-      priceSource: "https://example.com/sample",
-      news: [
-        { date: "2026-10-16", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample." }
+        { date: "2026-10-22", headline: "Shell, ExxonMobil JV Infineum exploring sale, FT reports", source: "TheFly (TipRanks)", url: "https://www.tipranks.com/news/the-fly/shell-exxonmobil-jv-infineum-exploring-sale-ft-reports-thefly-news", why: "Infineum, a chemicals business Shell co-owns with Exxon, is reportedly seeking a sale at about $8 billion." }
       ],
       upcoming: [
-        { date: "2026-10-30", event: "Sample event (replace by refreshing)", source: "Sample", url: "https://example.com/sample" }
+        { date: "2026-10-29", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/shel/" }
+      ]
+    },
+    BP: {
+      closes: [
+        { date: "2026-10-21", close: 49.85 },
+        { date: "2026-10-22", close: 50.05 },
+        { date: "2026-10-23", close: 51.32 },
+        { date: "2026-10-26", close: 50.53 },
+        { date: "2026-10-27", close: 48.93 }
+      ],
+      latest: { date: "2026-10-28", time: "10:04 ET", price: 49.37 },
+      priceSource: "https://stockanalysis.com/stocks/bp/history/",
+      news: [
+        { date: "2026-10-23", headline: "BP, Louisiana agree to Deepwater Horizon settlement payout, resolve coastal cases", source: "BNN Bloomberg", url: "https://www.bnnbloomberg.ca/business/international/2026/10/23/bp-louisiana-agree-to-deepwater-horizon-settlement-payout-resolve-coastal-cases/", why: "BP will pay Louisiana a $350 million lump sum instead of about $373 million in installments, closing out long-running spill claims." }
+      ],
+      upcoming: [
+        { date: "2026-10-30", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/bp/" }
+      ]
+    },
+    COP: {
+      closes: [
+        { date: "2026-10-21", close: 145.67 },
+        { date: "2026-10-22", close: 145.63 },
+        { date: "2026-10-23", close: 150.80 },
+        { date: "2026-10-26", close: 151.37 },
+        { date: "2026-10-27", close: 147.96 }
+      ],
+      latest: { date: "2026-10-28", time: "10:02 ET", price: 149.06 },
+      priceSource: "https://stockanalysis.com/stocks/cop/history/",
+      news: [
+        { date: "2026-10-27", headline: "ConocoPhillips assumed with a Neutral at Piper Sandler", source: "TheFly (TipRanks)", url: "https://www.tipranks.com/news/the-fly/conocophillips-assumed-with-a-neutral-at-piper-sandler-thefly-news", why: "Piper Sandler started coverage with a neutral rating and a $157 target, citing heavy spending and later free cash flow gains." }
+      ],
+      upcoming: [
+        { date: "2026-11-05", event: "Q3 2026 earnings (date per StockAnalysis, not confirmed on company page)", source: "StockAnalysis", url: "https://stockanalysis.com/stocks/cop/" }
       ]
     }
   }
 };
 
 const CHANGELOG = [
+  {
+    date: "2026-10-28",
+    summary: [
+      "Watchlist changed to XOM, CVX, SHEL, BP, COP. Old sample data for NVDA, JPM, ACN, DE, LLY removed.",
+      "XOM closes 178.09 to 179.91 (Oct 21 to Oct 27) on Infineum sale report; latest 180.97 intraday",
+      "CVX closes 226.78 to 228.23, no major news found; latest 229.28 intraday",
+      "SHEL closes 105.36 to 104.78 on Infineum sale report; latest 105.18 intraday",
+      "BP closes 49.85 to 48.93 on Deepwater Horizon settlement with Louisiana; latest 49.37 intraday",
+      "COP closes 145.67 to 147.96 on Piper Sandler initiation at Neutral; latest 149.06 intraday",
+      "Calendar added: FOMC decision Oct 28 (under XOM); earnings XOM Oct 30, CVX Oct 30, SHEL Oct 29, BP Oct 30, COP Nov 5.",
+      "Missing: CVX news is empty. Reuters, Business Wire, CNBC and Nasdaq pages could not be opened, so only articles opened this run are listed, one per ticker at most. Company IR pages not opened, so no earnings date is confirmed there.",
+      "Mode set to live."
+    ],
+    note: "Verify first: earnings dates (taken from StockAnalysis only; XOM, CVX, BP, SHEL, COP IR pages not checked). Prices are all from StockAnalysis; the Oct 28 figures are intraday around 10:02-10:05 ET and are shown as latest, not mixed into closes. retrievedAt (10:06 ET) is approximate, based on the source page times."
+  },
   {
     date: "2026-10-16",
     summary: [
@@ -352,7 +375,7 @@ function renderMasthead() {
   let asof = "As of " + fmtLong(BRIEF.asOf);
   if (BRIEF.priceType === "intraday") {
     const anyLatest = Object.values(BRIEF.companies || {}).map(c => c && c.latest).find(Boolean);
-    asof += anyLatest && anyLatest.time ? ", intraday at " + esc(anyLatest.time) + " ET" : ", intraday";
+    asof += anyLatest && anyLatest.time ? ", intraday at " + esc(anyLatest.time) : ", intraday";
   } else {
     asof += ", at the close";
   }
